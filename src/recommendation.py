@@ -23,4 +23,3 @@ def recommend(calories, protein, carbs, fiber, fat, sodium):
         recommendation.append((food_name, food_calories, food_protein, food_fiber))
     return recommendation
     
-print(recommend(200, 68, 100, 15, 20, 800))
