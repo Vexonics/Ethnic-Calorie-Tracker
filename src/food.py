@@ -1,5 +1,6 @@
 import sqlite3
 import os
+
 DB_PATH = os.path.join(os.path.dirname(__file__), "..", "nutrition.db")
 
 def add_food(food_name, serving_size, protein, fiber, calories, cuisines, carbs, sugar, sodium, fat):
@@ -16,5 +17,3 @@ def search_food(food_name):
    result = cursor.fetchone()
    connection.close()
    return result
-
-print(DB_PATH)
