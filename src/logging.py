@@ -56,8 +56,3 @@ def get_progress(cal_goal, protein_goal, carbs_goal, fiber_goal, fat_goal, sodiu
     "sodium": {"eaten": total_sodium, "remaining": sodium_goal - total_sodium},
 }
 
-
-
-print(get_progress(1324, 140, 182, 25, 52, 2300))
-
-
