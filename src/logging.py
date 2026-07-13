@@ -24,4 +24,40 @@ def log_meal(food_name, servings, meal_type):
     connection.commit()
     connection.close()
 
-log_meal("kontomire stew", 1, "Breakfast")
+def get_progress(cal_goal, protein_goal, carbs_goal, fiber_goal, fat_goal, sodium_goal):
+    date = datetime.date.today().isoformat()
+    connection = sqlite3.connect(DB_PATH)
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM meal_log WHERE date = ?", (date,))
+    result = cursor.fetchall()
+    connection.close()
+    
+    total_cal = 0
+    total_protein = 0
+    total_carbs = 0
+    total_fiber = 0
+    total_fat = 0
+    total_sodium = 0
+    
+    for i in result:
+       total_cal += i[4]
+       total_protein += i[5]
+       total_carbs += i[7]
+       total_fiber += i[6]
+       total_fat += i[8]
+       total_sodium += i[9]
+    
+    return {
+    "calories": {"eaten": total_cal, "remaining": cal_goal - total_cal},
+    "protein": {"eaten": total_protein, "remaining": protein_goal - total_protein},
+    "carbs": {"eaten": total_carbs, "remaining": carbs_goal - total_carbs},
+    "fiber": {"eaten": total_fiber, "remaining": fiber_goal - total_fiber},
+    "fat": {"eaten": total_fat, "remaining": fat_goal - total_fat},
+    "sodium": {"eaten": total_sodium, "remaining": sodium_goal - total_sodium},
+}
+
+
+
+print(get_progress(1324, 140, 182, 25, 52, 2300))
+
+
