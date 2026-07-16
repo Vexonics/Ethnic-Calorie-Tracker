@@ -1,4 +1,5 @@
-def calculate_tdee(weight, height, age, sex, activity_lvl, goal, goal_weight, weeks_to_goal):
+def calculate_tdee(weight, height, age, sex, activity_lvl, goal, goal_weight, months_to_goal):
+    weeks_to_goal = months_to_goal * 4
     weight = weight * 0.453592
     goal_weight = goal_weight * 0.453592
     height = height * 2.54

@@ -55,9 +55,3 @@ def get_progress(cal_goal, protein_goal, carbs_goal, fiber_goal, fat_goal, sodiu
     "fat": {"eaten": total_fat, "remaining": fat_goal - total_fat},
     "sodium": {"eaten": total_sodium, "remaining": sodium_goal - total_sodium},
 }
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 9bf78e1 (add main.py placeholder)
