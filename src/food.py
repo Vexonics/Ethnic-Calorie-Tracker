@@ -13,7 +13,7 @@ def add_food(food_name, serving_size, protein, fiber, calories, cuisines, carbs,
 def search_food(food_name):
    connection = sqlite3.connect(DB_PATH)
    cursor = connection.cursor()
-   cursor.execute("SELECT * from food WHERE food_name = ?", (food_name,))
+   cursor.execute("SELECT * from food WHERE LOWER(food_name) = LOWER(?)", (food_name,))
    result = cursor.fetchone()
    connection.close()
    return result
