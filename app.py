@@ -38,7 +38,26 @@ st.title("Ethnic Calorie Tracker")
 user = check_user()
 
 if user is None:
-    st.write("Welcome! Let's get you set up.")
+    name = st.text_input("Please enter your full name: ")
+    age = st.number_input("Please enter your age: ")
+    height = st.number_input("Please enter your height (inches): ")
+    weight = st.number_input("Please enter your weight (lbs): ")
+    goal_weight = st.number_input("Please enter your goal weight (lbs): ")
+    months_to_goal = st.number_input("Please enter how many months you want to spend toward this goal: ")
+    sex = st.selectbox("Sex", ["Male", "Female"])
+    activity_level = st.selectbox("Activity Level", ["Sedentary", "Lightly Active", "Moderately Active", "Active", "Very Active"])
+    goal = st.selectbox("Goal", ["Cut", "Bulk", "Maintain", "Body Recomposition"])
+
+    if st.button("Create Profile"):
+        connection = sqlite3.connect(DB_PATH)
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO user(name, age, weight, height, sex, activity_lvl, goal, goal_weight, months_to_goal) VALUES(?,?,?,?,?,?,?,?,?)", 
+                   (name, age, weight, height, sex, activity_level, goal, goal_weight, months_to_goal))
+        connection.commit()
+        connection.close()
+        st.success("Profile Create!")
+        st.rerun()
+
 else:
     age = user[2]
     weight = float(user[3])
