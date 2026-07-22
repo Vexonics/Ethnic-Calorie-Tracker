@@ -2,6 +2,8 @@
 
 A nutrition tracking and meal recommendation platform built for people whose diets aren't represented in mainstream calorie apps.
 
+**Live Demo:** https://ethnic-calorie-tracker.streamlit.app
+
 ## The Problem
 
 Most calorie trackers are built around Western foods. If you eat jollof rice, fufu, kontomire stew, or maqluba, you're either manually entering everything from scratch or getting inaccurate results. This app fixes that.
@@ -19,27 +21,30 @@ Most calorie trackers are built around Western foods. If you eat jollof rice, fu
 
 - Python
 - SQLite
-- Streamlit (coming)
+- Streamlit
 - FastAPI (coming)
 
-## How to Run
+## How to Run Locally
 
 1. Clone the repo
-2. Run database setup:
-python3 setup.py
-3. Populate food database:
-python3 data/seed_foods.py
-4. Run the app:
-python3 main.py
+2. Install dependencies:
+pip install streamlit
+3. Run the app:
+streamlit run app.py
 
 ## Roadmap
 
-- [ ] Streamlit web UI
-- [ ] FastAPI backend
+- [x] Food database with 26+ ethnic dishes
+- [x] Personalized TDEE and macro calculator
+- [x] Meal logging and progress tracking
+- [x] Food recommendation engine
+- [x] Streamlit web UI
+- [x] Deployed to Streamlit Cloud
 - [ ] AI-powered food lookup
-- [ ] Photo-based food recognition
-- [ ] Expanded ethnic food database (West African, Caribbean, South Asian)
-- [ ] Deployment
+- [ ] Barcode scanning via Open Food Facts API
+- [ ] Photo recognition
+- [ ] FastAPI backend
+- [ ] Google OAuth
 
 ## Why I Built This
 
