@@ -173,12 +173,12 @@ else:
                 delete_meals(meal[0])
                 st.rerun()
         
-        st.divider()
-        if st.button("Reset Profile"):
-            connection = sqlite3.connect(DB_PATH)
-            cursor = connection.cursor()
-            cursor.execute("DELETE FROM user")
-            cursor.execute("DELETE FROM meal_log")
-            connection.commit()
-            connection.close()
-            st.rerun()
+    st.divider()
+    if st.button("Reset Profile"):
+        connection = sqlite3.connect(DB_PATH)
+        cursor = connection.cursor()
+        cursor.execute("DELETE FROM user")
+        cursor.execute("DELETE FROM meal_log")
+        connection.commit()
+        connection.close()
+        st.rerun()
