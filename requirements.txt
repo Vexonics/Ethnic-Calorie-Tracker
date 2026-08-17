@@ -1,0 +1,4 @@
+requests @ file:///opt/miniconda3/conda-bld/requests_1762359592010/work
+requests-file @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_bfbabejyv2/croot/requests-file_1749719739174/work
+requests-toolbelt @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/requests-toolbelt_1731721330284/work
+streamlit @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_f5z35txmh5/croot/streamlit-split_1748963604927/work/streamlit
