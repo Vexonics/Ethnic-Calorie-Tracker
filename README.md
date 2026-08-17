@@ -14,7 +14,7 @@ Most calorie tracking apps are built around Western, packaged, barcode-scannable
 1. **Local SQLite cache** — checked first for instant, zero-latency lookups
 2. **USDA FoodData Central API — generic foods** (`Foundation`, `SR Legacy` data types) — tried first for common/whole foods, since these categories are cleaner and less noisy than packaged-food data
 3. **USDA FoodData Central API — branded foods** (`Branded` data type) — tried only if the generic search fails, catching common packaged foods (e.g. name-brand cookies) that don't exist in the generic categories
-4. **Manual entry fallback** — if nothing is found anywhere (typically true for regional/home-cooked dishes with no API coverage), the user can input nutrition values directly, which are saved to the local database and instantly searchable from then on
+4. **Manual entry fallback** — if nothing is found anywhere (typically true for regional/home-cooked dishes with no API coverage), the user can input nutrition values directly through a form, which are saved to the local database and instantly searchable from then on
 
 Every result that comes from the API is cached locally under the exact term the user searched — not the API's own product name — so repeat searches for the same food never hit the API twice and stay consistent regardless of how a given API happens to label a product.
 
@@ -28,7 +28,7 @@ Every result that comes from the API is cached locally under the exact term the 
 - Meal logging with automatic macro tracking against daily goals
 - Meal recommendation engine that ranks available foods by how well they fit remaining daily macro targets
 - Persistent local storage — profile and meal history persist across sessions via SQLite
-- Manual food entry for dishes not covered by any data source
+- Manual food entry for dishes not covered by any data source, with immediate re-searchability after submission
 
 ## Tech stack
 
@@ -42,14 +42,24 @@ Every result that comes from the API is cached locally under the exact term the 
 - Branded/packaged food coverage depends on USDA's `Branded` category, which is US-centric and won't have international packaged products
 - Manual entries rely on user-provided accuracy — there's no verification step
 - The recommendation engine currently ranks from the full food table rather than a personalized history
+- Hosted on Streamlit Community Cloud's free tier, which sleeps after inactivity — first load after a period of no traffic may take 30–60 seconds to wake up
 
 ## Local setup
 
-```bash
+\`\`\`bash
 git clone https://github.com/Vexonics/Ethnic-Calorie-Tracker.git
 cd Ethnic-Calorie-Tracker
 pip install -r requirements.txt
-streamlit run app.py
-```
+\`\`\`
 
-You'll need a free USDA FoodData Central API key ([sign up here](https://fdc.nal.usda.gov/api-key-signup/)) set in `src/api.py`.
+Create a `.env` file in the project root with a free [USDA FoodData Central API key](https://fdc.nal.usda.gov/api-key-signup/):
+
+\`\`\`
+USDA_API_KEY=your_key_here
+\`\`\`
+
+Then run:
+
+\`\`\`bash
+streamlit run app.py
+\`\`\`
